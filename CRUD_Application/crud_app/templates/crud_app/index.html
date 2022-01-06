@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block title%}App Home{%endblock%}
+
+{%block content%}
+<div class="container">
+    <di class="row">
+        <div class="col-6">
+            <form action="" method="post" novalidate>
+
+                {% csrf_token %}
+                {% for f in form%}
+                <div class="form-group">
+                    <label for="" {{f.label_tag}}></label>
+                    {{f}}
+                </div>
+                {%endfor%}
+                <input type="submit" class="btn btn-dark" value="Submit">
+              
+            </form>
+        </div>
+    </di>
+
+</div>
+{%endblock%}
