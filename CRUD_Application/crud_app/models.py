@@ -8,4 +8,4 @@ class Employee(models.Model):
     email=models.CharField(max_length=50)
     gender=models.CharField(max_length=20)
     mobile=models.IntegerField()
-    
+

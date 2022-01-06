@@ -3,23 +3,102 @@
 {%block title%}App Home{%endblock%}
 
 {%block content%}
-<div class="container">
-    <di class="row">
-        <div class="col-6">
+
+        <div class="col-sm-4">
+            <h1 class="text-center alert alert-success">Add Employee</h1>
             <form action="" method="post" novalidate>
 
                 {% csrf_token %}
-                {% for f in form%}
+                
                 <div class="form-group">
-                    <label for="" {{f.label_tag}}></label>
-                    {{f}}
+                    <label for="">{{form.first_name.label_tag}}</label>
+                    {{form.first_name}}
+                    <div class="was-validated text-danger">
+                        {{form.first_name.errors}}
+                      </div>
                 </div>
-                {%endfor%}
+                <div class="form-group">
+                    <label for="">{{form.last_name.label_tag}}</label>
+                    {{form.last_name}}
+                    <div class="was-validated text-danger">
+                        {{form.last_name.errors}}
+                      </div>
+                </div>
+                <div class="form-check form-check-inline my-3">
+                    <span class="mr-5">Gender</span> 
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="id_gender_0" value="male" checked>
+                    <label class="form-check-label" for="id_gender_0">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="id_gender_1" value="female">
+                    <label class="form-check-label" for="id_gender_1">Female</label>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">{{form.email.label_tag}}</label>
+                    {{form.email}}
+                    <div class="was-validated text-danger">
+                        {{form.last_name.errors}}
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="">{{form.mobile.label_tag}}</label>
+                    {{form.mobile}}
+                    <div class="was-validated text-danger">
+                        {{form.mobile.errors}}
+                      </div>
+                </div>
+            
                 <input type="submit" class="btn btn-dark" value="Submit">
-              
+           
+
+       
             </form>
         </div>
-    </di>
+        <div class="col-sm-8">
+            <h4 class="text-center alert alert-success">Show Employee Information</h4>
+            {%if employeeList%}
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
 
-</div>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for f in employeeList%}
+                  <tr>
+                    <th scope="row">{{f.id}}</th>
+                    <td>{{f.first_name}}</td>
+                    <td>{{f.last_name}}</td>
+                    <td>{{f.gender}}</td>
+                    <td>{{f.mobile}}</td>
+                    <td>{{f.email}}</td>
+                    <td>
+                        <a href="" class="btn btn-sm  btn-warning">Edit</a>
+                        <form action="{% url 'data_delete' f.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit"  class="btn btn-sm btn-danger" value="Delete" >
+                        </form>
+                    </td>
+
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            {%else%}
+            <h4 class="text-center alert alert-warning">No Records...!</h4>
+
+            {%endif%}
+        </div>
+   
 {%endblock%}
