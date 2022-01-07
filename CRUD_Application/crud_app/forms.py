@@ -4,8 +4,8 @@ from .models import Employee
 from django.core import validators
 from django.core.exceptions import ValidationError
 
-gender=[('male','male'),
-        ('female','female')
+gender=[('male','Male'),
+        ('female','Female')
         ]
 
 

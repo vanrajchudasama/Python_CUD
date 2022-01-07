@@ -24,6 +24,18 @@ def home(request):
         
     return render(request,"crud_app/index.html",{'form':emp_reg_form,'employeeList':emp})
 
+def update_data(request,id):
+    template_name="crud_app/update_Employee.html"
+    emp_obj = Employee.objects.get(pk=id)
+    if request.method == 'POST':
+        fm=employee_registration_form(request.POST,instance=emp_obj)
+        if fm.is_valid():
+            fm.save()
+    else:
+        fm=employee_registration_form(instance=emp_obj)
+
+    return render(request, template_name,{'form':fm})
+
 def delete_record(request,id):
     if request.method == 'POST':
         pi = Employee.objects.get(pk=id)

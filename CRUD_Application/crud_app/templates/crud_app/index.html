@@ -4,8 +4,8 @@
 
 {%block content%}
 
-        <div class="col-sm-4">
-            <h1 class="text-center alert alert-success">Add Employee</h1>
+        <div class="col-sm-4  shadow">
+            <h2 class="text-center alert alert-success">Add Employee</h2>
             <form action="" method="post" novalidate>
 
                 {% csrf_token %}
@@ -58,7 +58,7 @@
             </form>
         </div>
         <div class="col-sm-8">
-            <h4 class="text-center alert alert-success">Show Employee Information</h4>
+            <h2 class="text-center alert alert-success">Show Employee Information</h2>
             {%if employeeList%}
             <table class="table">
                 <thead>
@@ -84,7 +84,7 @@
                     <td>{{f.mobile}}</td>
                     <td>{{f.email}}</td>
                     <td>
-                        <a href="" class="btn btn-sm  btn-warning">Edit</a>
+                        <a href="{% url 'data_update' f.id %}" class="btn btn-sm  btn-warning">Edit</a>
                         <form action="{% url 'data_delete' f.id %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <input type="submit"  class="btn btn-sm btn-danger" value="Delete" >
