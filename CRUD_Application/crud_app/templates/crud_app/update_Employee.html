@@ -2,72 +2,69 @@
 {%load static%}
 {%block title%}App Home{%endblock%}
 {%block style%}
-<style>
-    #id_gender {
-        list-style-type: none;
-        margin-top: 14px;
-        font-size: large;
+    <style>
+        #id_gender{
+            list-style-type: none;
+            margin-top: 14px;
+            font-size: large;
 
-    }
-
-    #id_gender>li {
-        display: inline-flex;
-        margin-left: 10px;
-    }
-</style>
+        }
+        #id_gender > li{
+            display: inline-flex;
+            margin-left: 10px;
+        }
+    </style>
 {%endblock%}
 {%block content%}
 
-<div class="row">
-<div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded">
-    <h4 class="text-center alert alert-success">Update Employee</h4>
-    
-    <form action="" method="post" novalidate>
+        <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded">
+            <h1 class="text-center alert alert-success">Update Employee</h1>
+            <form action="" method="post" novalidate>
 
-        {% csrf_token %}
-
-        <div class="form-group">
-            <label for="">{{form.first_name.label_tag}}</label>
-            {{form.first_name}}
-            <div class="was-validated text-danger">
-                {{form.first_name.errors}}
-            </div>
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="">{{form.first_name.label_tag}}</label>
+                    {{form.first_name}}
+                    <div class="was-validated text-danger">
+                        {{form.first_name.errors}}
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="">{{form.last_name.label_tag}}</label>
+                    {{form.last_name}}
+                    <div class="was-validated text-danger">
+                        {{form.last_name.errors}}
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Gender</label>
+                    {{form.gender}}
+                    <div class="was-validated text-danger">
+                        {{form.gender.errors}}
+                      </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">{{form.email.label_tag}}</label>
+                    {{form.email}}
+                    <div class="was-validated text-danger">
+                        {{form.last_name.errors}}
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="">{{form.mobile.label_tag}}</label>
+                    {{form.mobile}}
+                    <div class="was-validated text-danger">
+                        {{form.mobile.errors}}
+                      </div>
+                </div>
+            
+                <input type="submit" class="btn btn-dark mt-3" value="Update">
+           
+                <a href="{% url 'home' %}" class="btn btn-info mt-3">Back to Home</a>
+       
+            </form>
         </div>
-        <div class="form-group">
-            <label for="">{{form.last_name.label_tag}}</label>
-            {{form.last_name}}
-            <div class="was-validated text-danger">
-                {{form.last_name.errors}}
-            </div>
-        </div>
-        <div class="form-check form-check-inline">
-            <label for="">Gender</label>
-            {{form.gender}}
-            <div class="was-validated text-danger">
-                {{form.gender.errors}}
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label for="">{{form.email.label_tag}}</label>
-            {{form.email}}
-            <div class="was-validated text-danger">
-                {{form.last_name.errors}}
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="">{{form.mobile.label_tag}}</label>
-            {{form.mobile}}
-            <div class="was-validated text-danger">
-                {{form.mobile.errors}}
-            </div>
-        </div>
-
-        <input type="submit" class="btn btn-dark mt-3" value="Update">
-
-        <a href="{% url 'home' %}" class="btn btn-info mt-3">Back to Home</a>
-
-    </form>
-</div>
-</div>
-{%endblock%}
+        {%endblock%}

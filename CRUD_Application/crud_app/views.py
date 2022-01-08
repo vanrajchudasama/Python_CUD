@@ -2,7 +2,6 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.http import HttpResponse
 from .forms import employee_registration_form
 from .models import Employee
-from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -20,7 +19,6 @@ def home(request):
             gender=emp_reg_form.cleaned_data['gender']
             reg=Employee(first_name=fn,last_name=ln,email=email,mobile=mobile,gender=gender)
             reg.save()
-            messages.success(request, 'Employee Profile details Save.')
             emp_reg_form=employee_registration_form()
     emp = Employee.objects.all()
         
@@ -33,9 +31,6 @@ def update_data(request,id):
         fm=employee_registration_form(request.POST,instance=emp_obj)
         if fm.is_valid():
             fm.save()
-            messages.success(request, 'Employee Profile details Update.')
-
-            return HttpResponseRedirect('/')
     else:
         fm=employee_registration_form(instance=emp_obj)
 
@@ -45,6 +40,4 @@ def delete_record(request,id):
     if request.method == 'POST':
         pi = Employee.objects.get(pk=id)
         pi.delete()
-        messages.warning(request, 'Employee Profile Delete.')
-
     return HttpResponseRedirect('/')
