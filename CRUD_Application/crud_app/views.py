@@ -10,9 +10,7 @@ def home(request):
     emp_reg_form = employee_registration_form()
     if request.POST:
         emp_reg_form = employee_registration_form(request.POST)
-        print(request.POST['gender'])
         if (emp_reg_form.is_valid()):
-            print(request.POST['gender'])
             fn=emp_reg_form.cleaned_data['first_name']
             ln=emp_reg_form.cleaned_data['last_name']
             email=emp_reg_form.cleaned_data['email']
