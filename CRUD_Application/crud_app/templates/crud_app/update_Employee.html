@@ -16,9 +16,9 @@
     </style>
 {%endblock%}
 {%block content%}
-
+<div class="row">
         <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded">
-            <h1 class="text-center alert alert-success">Update Employee</h1>
+            <h5 class="text-center alert alert-success">Update Employee</h5>
             <form action="" method="post" novalidate>
 
                 {% csrf_token %}
@@ -66,5 +66,5 @@
        
             </form>
         </div>
-
+</div>
         {%endblock%}
